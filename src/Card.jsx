@@ -6,12 +6,15 @@ export const Card = ({ agregarAlCard }) => {
 
 	function handleSubmit(e) {
 		e.preventDefault();
-		if (item !== "" && item2 !== "") {
+		if (
+			(item === "" || item.length <= 3) &&
+			(item2 === "" || item2.length <= 6)
+		) {
+			alert("“Por favor chequea que la información sea correcta”.");
+		} else {
 			agregarAlCard(item, item2);
 			setItem2("");
 			setItem("");
-		} else {
-			alert("No se puede agregar una tarea sin nombre o descripción");
 		}
 	}
 
@@ -24,8 +27,7 @@ export const Card = ({ agregarAlCard }) => {
 				borderRadius: "5px",
 				maxWidth: "400px",
 				display: "grid",
-				placeContent: "center"
-				
+				placeContent: "center",
 			}}>
 			<h3 style={{ marginBottom: "10px" }}>Lista de tareas</h3>
 			<h4 style={{ marginBottom: "10px" }}>
